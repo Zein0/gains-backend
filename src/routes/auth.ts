@@ -84,9 +84,15 @@ router.post('/logout',
 router.get('/me',
   authenticateToken,
   asyncHandler(async (req: AuthRequest, res: Response) => {
-    const user = req.user!.dbUser;
+    const user = await User.findById(req.user!.userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found',
+      });
+    }
     
-    res.json({
+    return res.json({
       success: true,
       data: {
         user: {

@@ -37,6 +37,9 @@ export interface IUser extends Document {
   lastActiveAt: Date;
   createdAt: Date;
   updatedAt: Date;
+  updateLastActive(): Promise<IUser>;
+  isTrialExpired(): boolean;
+  isSubscriptionActive(): boolean;
 }
 
 const UserSchema = new Schema<IUser>({

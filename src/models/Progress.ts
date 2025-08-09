@@ -3,7 +3,8 @@ import mongoose, { Document, Schema } from 'mongoose';
 export interface IProgress extends Document {
   userId: mongoose.Types.ObjectId;
   date: Date;
-  weight: number; // in kg
+  weight: number; // in kg,
+  musclesTrained: string[]; // e.g., ['chest', 'back', 'legs']
   photos: {
     front?: string; // URL to Cloudflare R2
     side?: string;  // URL to Cloudflare R2

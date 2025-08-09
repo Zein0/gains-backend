@@ -90,6 +90,7 @@ export const schemas = {
 
   updateProgress: Joi.object({
     weight: Joi.number().min(20).max(500),
+    musclesTrained: Joi.array().items(Joi.string().valid('Chest', 'Upper Back', 'Lats', 'Biceps', 'Triceps', 'Shoulders', 'Abs', 'Glutes', 'Calves', 'Hamstrings', 'Quads')),
     measurements: Joi.object({
       chest: Joi.number().min(50).max(200),
       waist: Joi.number().min(40).max(200),
